@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+    $("div").click(function(){
+        $(this).animate({
+        	bottom: '+=250px'
+        });
+    });
+});
+</script> 
+<style>
+
+div{
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+	margin-left: 35%;
+	position: absolute; /* Lembre que a posição é obrigado a estar relative,absolute ou fixed pra funcionar a função animate. */
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="w3-red"></div>
+<div class="w3-orange"></div>
+<div class="w3-yellow"></div>
+<div class="w3-blue"></div>
+<div class="w3-purple">?</div>
+<div class="w3-green">You</div>
+<div class="w3-teal">Are</div>
+<div class="w3-brown">How</div>
+<div class="w3-gray">World</div>
+<div class="w3-black">Hello</div>
+
+
+</body>
+</html>

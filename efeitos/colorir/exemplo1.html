@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("div").click(function(){ 							
+		colorirBackground($(this));		
+    });
+	
+		 //Criamos nossa função de colorir elemento:
+	     function colorirBackground(elemento){
+		 setInterval(function() { //A cada x tempo executara esses procedimentos: 
+		  var r1 = 1 + Math.floor(Math.random() * 2);  //Geramos os numeros necessario para utilizar o elemento rgb:
+		  var r2 = 1 + Math.floor(Math.random() * 5);
+		  var r3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  var g1 = 1 + Math.floor(Math.random() * 2);
+		  var g2 = 1 + Math.floor(Math.random() * 5);
+		  var g3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  
+		  var b1 = 1 + Math.floor(Math.random() * 2);
+		  var b2 = 1 + Math.floor(Math.random() * 5);
+		  var b3 = 1 + Math.floor(Math.random() * 5);		  
+		  $(elemento).css("background-color", "rgb("+r1+""+r2+""+r3+","+g1+""+g2+""+g3+","+b1+""+b2+""+b3+")");
+		  //Aplicamos ao elemento a cor de fundo rgb randomica.
+		
+		},
+		1500); // A cada 1,5 segundos irá executar a nossa função, gerando então novas cores para o elemento.
+	}
+	
+	
+});
+</script>
+
+<style>
+
+div{
+	width: 100px;
+	height: 100px;   /* FLU-FLU BÁSICO. */	
+	background-color: black;
+}
+
+
+</style>
+</head>
+<body>
+
+<center>
+<h2>Clique para colorir a DIV</h2>
+<div></div>
+</center>
+
+</body>
+</html>

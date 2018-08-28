@@ -1,0 +1,274 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+
+<head>
+    <title>Random art: 
+make your own
+</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" media="screen" type="text/css" href="media/css/base.css" />
+    
+<!--[if IE]><script type="text/javascript" src="/media/js/excanvas.js"></script><![endif]-->
+<script type="text/javascript" src="media/js/callback.js"></script>
+<script type="text/javascript" src="media/js/genjs.js"></script>
+
+    
+    <script type="text/javascript" src="media/js/jquery.js"></script>
+    <script type="text/javascript">
+
+    var idImagem, j, delayTimeInterval = 5000;
+
+    localStorage.setItem("idImagem", 53152);
+   
+
+     if(!localStorage.getItem("idImagem")){
+        localStorage.setItem("idImagem", 1);
+        idImagem = 1;
+    }else{
+     idImagem = localStorage.getItem("idImagem");
+    }
+
+
+    function active_menu(m) {
+      $("a.menu").removeClass("active-menu");
+      $("a.menu#"+m).addClass("active-menu");
+    }
+
+     $(document).ready(function () {
+	
+        active_menu("menu-online");
+
+        // We write idiotic code in order to be compatible with MSIE.
+
+        var painter, name, rna, nivelDetalhe = 0;
+        var ctx = false;
+        var res = parseInt($("canvas#picture").attr("width"));
+        var new_picture = ocaml_get("new_picture");
+        var compute_pixel = ocaml_get("compute_pixel");
+
+        var d, i;
+
+        $("button").hide();
+
+         $("form#online").submit(function (e) { 
+          //alert('Está sendo acionado o botão submit!');
+          
+          
+            if (!ctx) {
+              var cnv = document.getElementById("picture");
+              if ($.browser.msie) { cnv = G_vmlCanvasManager.initElement(cnv); }
+              ctx = cnv.getContext("2d");
+            }
+            res = parseInt($("canvas#picture").attr("width"));
+            rna = new_picture(''+idImagem);
+            $("span.caption").text(idImagem);
+            painter = window.setTimeout(begin_paint, 5); 
+
+          e.preventDefault();
+          return false;
+        });
+
+        function stop_paint() {
+          if (painter) { window.clearTimeout(painter); }
+          $("#progress").text("(stopped)");
+          $("input#stop").hide();
+          rna = new_picture(''+idImagem);
+        }
+
+        function begin_paint() {
+          ctx.fillStyle = "rgb(255,255,255)";
+          ctx.fillRect(0,0,res,res);
+          stop_paint(ctx,res);
+          $("input#stop").show();
+          $("#progress").text("(preview)");
+          d = 32; j = 0;
+          painter = window.setTimeout(paint_preview, 5);
+        }
+
+        function paint_preview() {
+          
+          for (var k = 0; d * k < res; k++) {
+            var x = 2.0 * d * (k + 0.5) / res - 1.0;
+            var y = 2.0 * d * (j + 0.5) / res - 1.0;
+            var c = compute_pixel(rna,x,y);
+            ctx.fillStyle = c;
+            ctx.fillRect(d*k,d*j,d,d);            
+          }
+          j = j + 1;
+          if (d*j >= res) {
+            j = 0;
+            if (d <= 8) {
+              i = 0;
+              painter = window.setTimeout(paint, 5);
+              return;               
+            }
+            else {  
+              d = d/2; 
+
+              //if(nivelDetalhe === 2){
+                //alert('Irá efetuar agora o dowload! idImagem: '+idImagem);
+                //saveCanvas(); //Faz o dowload da imagem gerada. 
+                //idImagem++; //O id da imagem se altera.              
+                //$("form").submit();//Aqui fazemos uma nova requisição de gerar uma nova imagem.
+                //nivelDetalhe = 0;
+                //alert('Nível de detalhe agora é o paint');
+             // }
+              //nivelDetalhe++;
+
+            }
+          }
+          painter = window.setTimeout(paint_preview, 5); 
+        }
+
+        function paint() {
+          $("#progress").text(Math.floor(100*j/res)+ "%");
+          for (var k = 0; k < 1000; k++) {
+            var x = 2.0 * (i + 0.5) / res - 1.0;
+            var y = 2.0 * (j + 0.5) / res - 1.0;
+            var c = compute_pixel(rna,x,y);
+            ctx.fillStyle = c;
+
+
+           for(var escravos = 0; escravos < 5; escravos++){            
+              ctx.fillRect(i,j+escravos,1,1);           
+            }
+
+             i = i + 1;
+              if (i >= res) {
+                i = 0;
+                j = j + 1;
+                break;
+              }
+
+          }
+          if (j >= res) {
+            $("#progress").text("");
+            $("input#stop").hide();
+            $("button").show();
+          }
+          else { 
+            painter = window.setTimeout(paint, 5);
+          }
+        }
+
+
+        function saveCanvas(){
+              var canvas = document.getElementById("picture");           
+              
+              var imagem = canvas.toDataURL("image/png");
+
+              imagem.replace(/^data:image\/[^;]/, 'data:application/octet-stream');             
+             
+              var download = document.createElement('a');
+              download.href = imagem;
+              download.target = "_blank";
+              download.download = 'minhaArte'+idImagem+'.png';
+              //download.click();
+              $("#urls").append("<img src='"+imagem+"'/>");
+              $("#urls").append("<p><b>"+idImagem+"<b></p>");  
+
+              idImagem++; //O id da imagem se altera. 
+              localStorage.setItem("idImagem", idImagem);
+              $("form#online").submit();
+        }
+
+
+       
+
+        $("input#stop").hide();
+
+        $("input#stop").click(function () {                  
+          stop_paint();       
+          return false;
+        });
+
+
+        $("button").click(function (e) {  
+          e.preventDefault();         
+          saveCanvas();
+          //$("form#online").submit();
+         });
+
+         setInterval(() => {
+
+
+          if(j >= 256){
+              delayTimeInterval = 5000;              
+              j = 0;
+              $("button").click();
+          }
+
+
+        }, delayTimeInterval);
+
+
+    });
+
+
+
+
+    </script>
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18033973-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+  
+<h3>Make your own random picture</h3>
+
+<form id="online" action="">
+<p>Press "Paint".</p>
+<p> 
+ <input type='submit' name='paint' value='Paint'/>
+</p>
+
+<p><span id="progress"></span> <input type='submit' id='stop' name='stop' value='Stop'/></p>
+
+<canvas id="picture" width="256" height="256">
+  If you see this text your browser does not support HTML5 canvas
+  element and so you will not be able to generate random pictures
+  online. You should use Google Chrome (it's fast), Mozilla Firefox
+  (it's slow), or Internet Explorer 8 (even slower). Sorry for the
+  inconvenience.
+</canvas>
+<br/>
+<span class="caption"></span>
+</form>
+
+
+
+
+<form method="post" id="submit">
+<input type='hidden' id='submit_name' name='submit_name' value=''/>
+<div id="submit">
+Is this picture good? 
+<button>Salvar</button>
+the online gallery!
+</div>
+</form>
+
+<div id="urls"></div>
+
+
+
+
+</body>
+
+</html>

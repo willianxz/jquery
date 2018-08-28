@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script>
+$(document).ready(function(){ 
+    $("img").click(function(){ //Quando uma imagem for clicada: 
+		 $(this).parent().find('.conteudo').slideToggle("slow"); 
+		 //É necessario procurar o parente do (this), onde o (this) é a foto clicada e o parente será a classe conteudo, pois são filhos do mesmo pai.
+    });
+});
+</script>
+
+<style>
+img{
+	width: 100%;
+	height: 500px;
+	padding: 20px;
+}
+
+.conteudo{
+	display:none;
+}
+
+p,h1,h2,h3{
+	padding: 20px;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="row">
+	<div class="col-md-4" style="border-style: solid;">
+		<img src="http://passaros.com/wp-content/uploads/2013/06/image0011-1.jpg"/>
+		<div class="conteudo">
+			<h1>Ortono Lad</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+			Ut feugiat nulla id tincidunt lacinia. 
+			Donec dictum tortor est, in sollicitudin orci cursus nec. Cras blandit sapien sed tellus scelerisque cursus. 
+			Fusce arcu quam, faucibus vestibulum ipsum in, feugiat accumsan metus. Praesent finibus quam in ligula efficitur vehicula. 
+			Nulla interdum velit quam, non mattis est vestibulum congue. Aenean et lobortis tortor. Donec bibendum mauris nec nisi consectetur,
+			non tempor tellus consequat. Nullam id aliquet libero. Quisque finibus sodales metus. 
+			Sed eu eleifend tortor, vitae ultrices ante. Phasellus feugiat bibendum orci. 
+			Praesent sodales arcu elementum risus dictum, id cursus arcu congue.
+			</p>
+		</div>
+	</div>
+	
+	<div class="col-md-4" style="border-style: solid;">
+		<img src="https://i.ytimg.com/vi/JFYoEpTCyes/hqdefault.jpg"/>
+		<div class="conteudo">
+			<h1>Ortono Lad</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+			Ut feugiat nulla id tincidunt lacinia. 
+			Donec dictum tortor est, in sollicitudin orci cursus nec. Cras blandit sapien sed tellus scelerisque cursus. 
+			Fusce arcu quam, faucibus vestibulum ipsum in, feugiat accumsan metus. Praesent finibus quam in ligula efficitur vehicula. 
+			Nulla interdum velit quam, non mattis est vestibulum congue. Aenean et lobortis tortor. Donec bibendum mauris nec nisi consectetur,
+			non tempor tellus consequat. Nullam id aliquet libero. Quisque finibus sodales metus. 
+			Sed eu eleifend tortor, vitae ultrices ante. Phasellus feugiat bibendum orci. 
+			Praesent sodales arcu elementum risus dictum, id cursus arcu congue.
+			</p>
+		</div>
+	</div>
+	
+	<div class="col-md-4" style="border-style: solid;">
+		<img src="http://crbio08.gov.br/wp-content/uploads/2016/03/blog-crbio08-bpa-resgata-passaros-cativeiro.jpg"/>
+		<div class="conteudo">
+			<h1>Ortono Lad</h1>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+			Ut feugiat nulla id tincidunt lacinia. 
+			Donec dictum tortor est, in sollicitudin orci cursus nec. Cras blandit sapien sed tellus scelerisque cursus. 
+			Fusce arcu quam, faucibus vestibulum ipsum in, feugiat accumsan metus. Praesent finibus quam in ligula efficitur vehicula. 
+			Nulla interdum velit quam, non mattis est vestibulum congue. Aenean et lobortis tortor. Donec bibendum mauris nec nisi consectetur,
+			non tempor tellus consequat. Nullam id aliquet libero. Quisque finibus sodales metus. 
+			Sed eu eleifend tortor, vitae ultrices ante. Phasellus feugiat bibendum orci. 
+			Praesent sodales arcu elementum risus dictum, id cursus arcu congue.
+			</p>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

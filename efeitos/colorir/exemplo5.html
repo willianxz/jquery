@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+   						
+		colorirBackground("#colorido");//Aplicamos ao elemento com o id colorido.		
+   
+	
+		 //Criamos a nossa função para divs:
+	     function colorirBackground(elemento){
+		 setInterval(function() { //A cada x tempo executara esses procedimentos: 
+		  var r1 = 1 + Math.floor(Math.random() * 2); //Geramos os numeros necessario para utilizar o elemento rgb:
+		  var r2 = 1 + Math.floor(Math.random() * 5);
+		  var r3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  var g1 = 1 + Math.floor(Math.random() * 2);
+		  var g2 = 1 + Math.floor(Math.random() * 5);
+		  var g3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  
+		  var b1 = 1 + Math.floor(Math.random() * 2);
+		  var b2 = 1 + Math.floor(Math.random() * 5);
+		  var b3 = 1 + Math.floor(Math.random() * 5);		  
+		  $(elemento).css("background-color", "rgb("+r1+""+r2+""+r3+","+g1+""+g2+""+g3+","+b1+""+b2+""+b3+")");
+		   //Aplicamos ao elemento a cor de fundo rgb randomica.
+		},
+		1500); // A cada 1,5 segundos irá executar a nossa função, gerando então novas cores para o elemento.
+	}
+	
+	
+});
+</script>
+</head>
+<body>
+
+<center>
+<div class="w3-container">
+  <div class="w3-card-4" style="width:50%" id="colorido">
+
+    <div class="w3-container w3-center">
+      <h3>Friend Request</h3>
+      <img src="http://www.pergunteaumamulher.com/wp-content/uploads/2015/11/pessoa-boa-vibe.jpg" alt="Avatar" style="width:80%">
+      <h5>John Doe</h5>
+
+      <div class="w3-section">
+        <button class="w3-button w3-green">Accept</button>
+        <button class="w3-button w3-red">Decline</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</center>
+</body>
+</html>

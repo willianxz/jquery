@@ -1,0 +1,42 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<h1>aaaaa</h1>
+<div id="dialog" title="te Best">
+	
+	<p>The Best are</p>
+	<ul>
+		<li>Jornada</li>
+		<li>Jornada</li>
+		<li>Jornada</li>
+		<li>Jornada</li>
+		<li>Jornada</li>
+	</ul>
+
+</div>
+
+<button id="showAlert">Show alert</button>
+
+
+
+<script>
+	$(function(){
+		$("#dialog").dialog({
+			autoOpen: false
+		});
+
+		$("#showAlert").on("click",function(){
+			$("#dialog").dialog("open");
+		});
+
+	});
+</script>
+</body>
+</html>

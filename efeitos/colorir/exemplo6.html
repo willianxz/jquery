@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("div").click(function(){     
+		
+			
+		
+		colorirDivId('colorida5');
+		colorirDivId('colorida6'); //Aplicamos a nossas funções em cada elemento.
+		colorirDivId('colorida7');
+		colorirDivId('colorida8');
+		
+		colorirElementoTexto('h2');
+								
+		colorirBackground($(this));		
+    });
+	
+	 //Criamos a nossa função para textos:
+	    function colorirElementoTexto(elemento){
+		 setInterval(function() { //A cada x tempo executara esses procedimentos: 
+		  var r1 = 1 + Math.floor(Math.random() * 2);//Geramos os numeros necessario para utilizar o elemento rgb:
+		  var r2 = 1 + Math.floor(Math.random() * 5);
+		  var r3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  var g1 = 1 + Math.floor(Math.random() * 2);
+		  var g2 = 1 + Math.floor(Math.random() * 5);
+		  var g3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  
+		  var b1 = 1 + Math.floor(Math.random() * 2);
+		  var b2 = 1 + Math.floor(Math.random() * 5);
+		  var b3 = 1 + Math.floor(Math.random() * 5);		  
+		  $(elemento).css("color", "rgb("+r1+""+r2+""+r3+","+g1+""+g2+""+g3+","+b1+""+b2+""+b3+")");
+		  //Aplicamos ao elemento a cor rgb randomica.
+		},
+		3000); // A cada 3 segundos irá executar a nossa função, gerando então novas cores para o elemento.
+	}
+	
+	
+	//Criamos a nossa função para colorir o fundo de nossos elementos através do ID
+	 function colorirDivId(id){
+		 setInterval(function() { //A cada x tempo executara esses procedimentos: 
+		  var r1 = 1 + Math.floor(Math.random() * 2); //Geramos os numeros necessario para utilizar o elemento rgb:
+		  var r2 = 1 + Math.floor(Math.random() * 5);
+		  var r3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  var g1 = 1 + Math.floor(Math.random() * 2);
+		  var g2 = 1 + Math.floor(Math.random() * 5);
+		  var g3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  
+		  var b1 = 1 + Math.floor(Math.random() * 2);
+		  var b2 = 1 + Math.floor(Math.random() * 5);
+		  var b3 = 1 + Math.floor(Math.random() * 5);		  
+		  $('#'+id).css("background-color", "rgb("+r1+""+r2+""+r3+","+g1+""+g2+""+g3+","+b1+""+b2+""+b3+")");
+		},
+		3000); // A cada 3 segundos irá executar a nossa função, gerando então novas cores para o elemento.
+	}
+	
+	//Criamos a nossa função para divs:
+	     function colorirBackground(elemento){
+		 setInterval(function() { //A cada x tempo executara esses procedimentos: 
+		  var r1 = 1 + Math.floor(Math.random() * 2); //Geramos os numeros necessario para utilizar o elemento rgb:
+		  var r2 = 1 + Math.floor(Math.random() * 5);
+		  var r3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  var g1 = 1 + Math.floor(Math.random() * 2);
+		  var g2 = 1 + Math.floor(Math.random() * 5);
+		  var g3 = 1 + Math.floor(Math.random() * 5);
+		  
+		  
+		  var b1 = 1 + Math.floor(Math.random() * 2);
+		  var b2 = 1 + Math.floor(Math.random() * 5);
+		  var b3 = 1 + Math.floor(Math.random() * 5);		  
+		  $(elemento).css("background-color", "rgb("+r1+""+r2+""+r3+","+g1+""+g2+""+g3+","+b1+""+b2+""+b3+")");
+		   //Aplicamos ao elemento a cor de fundo rgb randomica.
+		},
+		3000); // A cada 3 segundos irá executar a nossa função, gerando então novas cores para o elemento.
+	}
+	
+	
+});
+</script>
+
+<style>
+
+h2,p{
+text-align: center;
+}
+
+div{
+	
+	
+}
+
+.exemplo1{
+	width: 300px;
+	height: 300px;
+	background-color: black;
+	float:left;
+	margin: 10px;
+	box-shadow: 5px 5px 5px black;
+	border-radius: 50%;
+}
+
+.exemplo2{
+	width: 100px;
+	height: 100px;
+	background-color: black;
+	float:left;
+	box-shadow: 5px 5px 5px black;
+}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="exemplo1" id="colorida1"></div>
+<div class="exemplo1" id="colorida2"></div>
+<div class="exemplo1" id="colorida3"></div>
+<div class="exemplo1" id="colorida4"></div>
+
+<h2>Colorido</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non tincidunt lorem. Donec id rutrum odio. Nunc vitae leo eget metus condimentum egestas. Vestibulum convallis velit luctus nulla sagittis vestibulum. Phasellus sollicitudin imperdiet ante vitae eleifend. Duis sodales maximus ex, at imperdiet eros. Proin orci velit, suscipit vel iaculis non, varius sit amet libero.</p>
+
+<p>Sed euismod pharetra pretium. Aliquam feugiat orci non nisl facilisis tristique. Nullam mollis metus sapien, fringilla fringilla quam blandit ac. Nulla quis elit felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent auctor volutpat arcu in consequat. Cras laoreet nisl massa, id placerat sapien consequat id. Ut fermentum lorem et purus bibendum dignissim. Sed maximus mi vitae lectus mollis, sagittis pulvinar nisl dignissim.</p>
+
+<p>Duis non semper enim. Maecenas lacinia arcu sed magna fringilla congue. Quisque scelerisque augue vitae libero tristique, ac sagittis orci aliquam. Aenean sed accumsan lectus, quis mattis dolor. Maecenas pulvinar lorem sit amet dolor elementum, non tempor augue tincidunt. Duis molestie ac ante eu feugiat. Curabitur cursus eros sit amet consectetur ornare. Etiam eleifend eros orci, vitae aliquam dolor suscipit ut. Pellentesque in magna at libero eleifend semper. Nulla sit amet gravida dolor. Etiam fermentum, sapien eget malesuada cursus, odio nisl vestibulum augue, nec ornare mi nibh tincidunt ligula.</p>
+
+
+
+
+<div class="exemplo2" id="colorida5"></div>
+<div class="exemplo2" id="colorida6"></div>
+<div class="exemplo2" id="colorida7"></div>
+<div class="exemplo2" id="colorida8"></div>
+
+
+</body>
+</html>

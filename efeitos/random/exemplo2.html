@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+    	var sorteio = Math.floor(Math.random() * 11); //Arredonda o numero sorteado e multiplica até o numero escolhido, sorteia um numero de 0 - 10       
+        
+    	var valorSorte = $("input[name=sorte]").val();
+
+    	$('p').text('numero sortido: '+sorteio);
+
+    	if(sorteio == valorSorte){
+    		alert('Muito bem você acerto!');
+    	}
+
+    });
+});
+</script>
+</head>
+<body>
+
+<center>
+
+<p>Digite um numero de 0 - 10</p>
+
+<input type="number" name="sorte">
+<button>Sorteio</button>
+</center>
+
+</body>
+</html>
